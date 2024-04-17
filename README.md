@@ -6,7 +6,7 @@ All appointments and blockouts are fixed 30 minute durations, and can be assigne
 
 In the interest of scalability, and clearer data, I decided to split out the definition of an Appointment, and a Blockout. For this application's purpose, an Appointment is a 30 minute timeslot booked out within the day, to prevent another Appointment being added on the same date and timeslot. A Blockout is essentially a recurring Appointment every day, that prevents any new Appointments from being added in its timeslot every day. Another way to look at it is a Blockout can also be an Appointment without a defined Date component.
 
-The application has been designed with the fact of being able to making appointments in 30 minute intervals (e.g. minutes are either 0 or 30). This hasn't been enforced in code (ie. KEEP 15:52 is a legal input), but the display for the available timeslots will be displayed as such.
+The application has been designed with the fact of being able to making appointments in 30 minute intervals (e.g. minutes are either 0 or 30). This hasn't been enforced in code (ie. KEEP 15:52 is a legal input), but the display for the available timeslots will be displayed as such (i.e. if an appointment is listed for 09:00 and 09:01, the one with 09:00 will cause the timeslot "09:00 AM - 09:30 AM" to not display when using FIND, but the one with 09:01 will cause that same timeslot to appear in FIND).
 
 The application will continuously wait for input until it is forced to quit. To quit, either don't enter any text, or type "EXIT".
 
