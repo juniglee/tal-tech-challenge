@@ -8,6 +8,10 @@ In the interest of scalability, and clearer data, I decided to split out the def
 
 The application has been designed with the fact of being able to making appointments in 30 minute intervals (e.g. minutes are either 0 or 30). This hasn't been enforced in code (ie. KEEP 15:52 is a legal input), but the display for the available timeslots will be displayed as such.
 
+The application will continuously wait for input until it is forced to quit. To quit, either don't enter any text, or type "EXIT".
+
+Database is handled via migration (code-first approach).
+
 The console application accepts 4 different commands:
 
 ## 1. ADD 
@@ -51,5 +55,7 @@ Allows the user to block out the timeslot specified in the input from allowing a
 5. Allow the addition of an assigned user. For example, if this was a medical appointment system, we should be able to add a doctor.
 6. Allows the functionality of adding multiple appointments to a single timeslot. This can only work if there was a user added as per above.
 7. Email functionality. To send a confirmation email to the user that their appointment was successfully booked in the timeslot. Will also require an email field input.
-8. Integration tests. It will be good to ensure that the correct data operations are taking place.
-9. Containerize the application. This is not really all that required, but it would be nice to have to show that we can containerize the app for better deployment too.
+8. Defining the connection string via an appsettings.json file in the console application level, then have it be passed down to the DbContext via dependency injection. Currently, the connection string is hard defined in the DbContext level.
+9. Adding logging.
+10. Integration tests. It will be good to ensure that the correct data operations are taking place.
+11. Containerize the application. This is not really all that required, but it would be nice to have to show that we can containerize the app for better deployment too.
