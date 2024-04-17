@@ -97,6 +97,31 @@ namespace TAL.TechTest.BLL.Tests
         }
 
         [Test]
+        public void CreateAppointment_ShouldNotCreateAppointment_IfBlockoutExistsForThatTimeslot()
+        {
+            //Arrange
+            var appointmentService = new AppointmentService(_mockAppointmentRepository.Object, _mockBlockoutRepository.Object);
+            var testAppointment = new Appointment
+            {
+                Id = Guid.NewGuid(),
+                Date = DateTime.ParseExact("24/04 15:30", "dd/MM HH:mm", null)
+            };
+
+            var testBlockouts = new List<Blockout>
+            {
+                new Blockout { Id = Guid.NewGuid(), StartTime = TimeOnly.ParseExact("12:00", "HH:mm", null) },
+                new Blockout { Id = Guid.NewGuid(), StartTime = TimeOnly.ParseExact("15:30", "HH:mm", null) }
+            };
+            _mockBlockoutRepository.Setup(x => x.Get()).Returns(testBlockouts);
+
+            //Act
+            var result = appointmentService.Create(testAppointment);
+
+            //Assert
+            StringAssert.AreEqualIgnoringCase($"This timeslot has been blocked out from allowing any appointments to be made on this timeslot.", result);
+        }
+
+        [Test]
         public void DeleteAppointment_ShouldDelete_IfExists()
         {
             //Arrange

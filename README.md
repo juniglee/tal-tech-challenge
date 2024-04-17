@@ -2,9 +2,9 @@
 
 Basic console application demonstrating an API layer with basic database functionality. This console application is meant to simulate an appointment system by being able to add an appointment, and block out timeslots as required.
 
-Appointments are fixed 30 minute durations, and can be assigned any day except outside 9AM - 5PM. There is also an additional constraint that except from 4PM to 5PM on each second day of the third week of any month, this time will be reserved and unavailable.
+All appointments and blockouts are fixed 30 minute durations, and can be assigned any day except outside 9AM - 5PM. There is also an additional constraint that except from 4PM to 5PM on each second day of the third week of any month (i.e. every third Tuesday of the month), this time will be reserved and unavailable.
 
-I have also added the liberty of only allowing 30 minute intervals for booking an appointment (all mm parameters only accept 00 or 30. for easier display purposes).
+The application has been designed with the fact of being able to making appointments in 30 minute intervals (e.g. minutes are either 0 or 30). This hasn't been enforced, but the display for the available timeslots will be displayed as such.
 
 The console application accepts 4 different commands:
 
@@ -12,11 +12,15 @@ The console application accepts 4 different commands:
 
 Input format: DD/MM hh:mm
 
+Example: ADD 24/04 15:00
+
 Adds an appointment to the database. This locks out 30 minutes access to that timeslot in the specified day.
 
 ## 2. DELETE
 
 Input format: DD/MM hh:mm
+
+Example: DELETE 24/04 15:00
 
 Removes the appointment in that time slot from the database.
 
@@ -24,16 +28,23 @@ Removes the appointment in that time slot from the database.
 
 Input format: DD/MM
 
-Find all available timeslots for the given day.
+Example: FIND 24/04
+
+Find all available timeslots for the given day, taking into factor existing appointments and blockouts.
 
 ## 4. KEEP
 
 Input format: hh:mm
 
-Allows the user to block out the timeslot specified in the input from allowing an appointment to be added to that timeslot.
+Example: KEEP 15:00
 
-## Areas for improvement
+Allows the user to block out the timeslot specified in the input from allowing an appointment to be added to that timeslot at any date. Blocks out 30 minutes from the specified time.
 
-1. Allow the addition of an assigned user. For example, if this was a medical appointment system, we should be able to add a doctor.
-2. Allows the functionality of adding multiple appointments to a single timeslot. This can only work if there was a user added as per above.
-3. Email functionality. To send a confirmation email to the user that their appointment was successfully booked in the timeslot. Will also require an email field input.
+## Areas for Improvement
+
+1. For time input, allow smart conversion of time based on AM or PM. For example, since the app's restriction is that appointments cannot be added outside of 9AM to 5PM, therefore putting in 01:00 should be automatically read as 01:00PM, rather than AM.
+2. Allow the usage of mixed or lower case commands (e.g. add instead of ADD). Probably just a simple .ToLowerCase() check addition.
+3. Allow the addition of an assigned user. For example, if this was a medical appointment system, we should be able to add a doctor.
+4. Allows the functionality of adding multiple appointments to a single timeslot. This can only work if there was a user added as per above.
+5. Email functionality. To send a confirmation email to the user that their appointment was successfully booked in the timeslot. Will also require an email field input.
+6. Integration tests. It will be good to ensure that the correct data operations are taking place.

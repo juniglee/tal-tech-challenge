@@ -19,9 +19,14 @@ namespace TAL.TechTest.BLL.Service
         {
             //exists check
             var existingAppointment = _appointmentRepository.Get(appointment.Date);
+            var blockouts = _blockoutRepository.Get();
             if (existingAppointment != null)
             {
                 return $"Appointment already exists on {appointment.Date.ToString()}.";
+            }
+
+            if (blockouts.Any(x => x.StartTime == TimeOnly.FromDateTime(appointment.Date))) {
+                return $"This timeslot has been blocked out from allowing any appointments to be made on this timeslot.";
             }
 
             //time check
