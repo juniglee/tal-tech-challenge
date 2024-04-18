@@ -12,7 +12,7 @@ using TAL.TechTest.DAL;
 namespace TAL.TechTest.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240417035715_Initial_Create")]
+    [Migration("20240418012050_Initial_Create")]
     partial class Initial_Create
     {
         /// <inheritdoc />
@@ -50,7 +50,7 @@ namespace TAL.TechTest.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Blockout");
+                    b.ToTable("Blockouts");
                 });
 #pragma warning restore 612, 618
         }

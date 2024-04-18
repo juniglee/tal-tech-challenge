@@ -14,6 +14,20 @@ Database is handled via migration (code-first approach).
 
 The console application accepts 4 different commands (commands are case insensitive):
 
+# Setup
+
+There isn't much setup that needs to be done, except to get the database up and running.
+
+To create the database, an Initial_Create migration has already been created. You will simply need to run:
+
+```
+Update-Database -s "TAL.TechTest.DAL"
+```
+
+Ensure that in Package Manager Console, the Default project is set to TAL.TechTest.DAL.
+
+Once the database has been created with the tables, you can simply execute the console app via Visual Studio.
+
 ## 1. ADD 
 
 Input format: DD/MM hh:mm
@@ -58,3 +72,4 @@ Allows the user to block out the timeslot specified in the input from allowing a
 8. Adding logging.
 9. Integration tests. It will be good to ensure that the correct data operations are taking place.
 10. Containerize the application. This is not really all that required, but it would be nice to have to show that we can containerize the app for better deployment too.
+11. Convert the application into a proper executable. At the current point of time, it cannot be run without either access to Visual Studio, or VS command lines.

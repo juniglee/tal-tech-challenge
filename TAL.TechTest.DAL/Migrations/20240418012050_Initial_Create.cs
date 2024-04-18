@@ -24,7 +24,7 @@ namespace TAL.TechTest.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blockout",
+                name: "Blockouts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -32,7 +32,7 @@ namespace TAL.TechTest.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blockout", x => x.Id);
+                    table.PrimaryKey("PK_Blockouts", x => x.Id);
                 });
         }
 
@@ -43,7 +43,7 @@ namespace TAL.TechTest.DAL.Migrations
                 name: "Appointments");
 
             migrationBuilder.DropTable(
-                name: "Blockout");
+                name: "Blockouts");
         }
     }
 }
