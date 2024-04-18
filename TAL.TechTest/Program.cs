@@ -31,7 +31,7 @@ namespace TAL.TechTest
                 Console.WriteLine("Please enter an input:");
                 string rawInput = Console.ReadLine();
 
-                if (rawInput == "EXIT" || string.IsNullOrEmpty(rawInput))
+                if (rawInput.ToLower() == "exit" || string.IsNullOrEmpty(rawInput))
                 {
                     return;
                 }
@@ -40,9 +40,9 @@ namespace TAL.TechTest
                     string result = string.Empty;
                     string[] inputs = rawInput.Split(' ');
 
-                    switch (inputs[0])
+                    switch (inputs[0].ToLower())
                     {
-                        case "ADD":
+                        case "add":
                             string appointmentDate = inputs[1] + " " + inputs[2];
 
                             var appointment = new Appointment {
@@ -54,14 +54,14 @@ namespace TAL.TechTest
                             Console.WriteLine(result);
                             Console.WriteLine();
                             break;
-                        case "DELETE":
+                        case "delete":
                             string appointmentDateToDelete = inputs[1] + " " + inputs[2];
 
                             result = appointmentService.Delete(DateTime.ParseExact(appointmentDateToDelete, "dd/MM HH:mm", null));
                             Console.WriteLine(result);
                             Console.WriteLine();
                             break;
-                        case "FIND":
+                        case "find":
                             DateOnly appointmentDateToFind = DateOnly.ParseExact(inputs[1], "dd/MM", null);
 
                             var timeslots = appointmentService.GetAvailableTimeslotsForDate(appointmentDateToFind);
@@ -75,7 +75,7 @@ namespace TAL.TechTest
                             }
                             Console.WriteLine();
                             break;
-                        case "KEEP":
+                        case "keep":
                             string blockoutTime = inputs[1];
 
                             var blockout = new Blockout
