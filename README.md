@@ -69,13 +69,14 @@ Kills the console application. The user can also choose to input an empty comman
 ## Areas for Improvement
 
 1. For time input, allow smart conversion of time based on AM or PM. For example, since the app's restriction is that appointments cannot be added outside of 9AM to 5PM, therefore putting in 01:00 should be automatically read as 01:00PM, rather than AM.
-2. Deleting a Blockout. As it is now, you can add a Blockout, but you can't Delete one. Given there are a finite amount of timeslots in a day with zero restrictions (16 timeslots maximum), adding 16 blockouts essentially means you can never add any appointments to the app ever.
-3. Better defined timeslots. For example, actually enforcing the 30 minute input, or even extending it to allow 15 minute intervals instead.
-4. Allow the addition of an assigned user. For example, if this was a medical appointment system, we should be able to add a doctor.
-5. Allows the functionality of adding multiple appointments to a single timeslot. This can only work if there was a user added as per above.
-6. Email functionality. To send a confirmation email to the user that their appointment was successfully booked in the timeslot. Will also require an email field input.
-7. Defining the connection string via an appsettings.json file in the console application level, then have it be passed down to the DbContext via dependency injection. Currently, the connection string is hard defined in the DbContext level.
-8. Adding logging.
-9. Integration tests. It will be good to ensure that the correct data operations are taking place.
-10. Containerize the application. This is not really all that required, but it would be nice to have to show that we can containerize the app for better deployment too.
-11. Convert the application into a proper executable. At the current point of time, it cannot be run without either access to Visual Studio, or VS command lines.
+2. Adding a weekend check. I did not add this, as this would be dependent on the app's use case. For example, the user may be working on the weekends, and so I did not make the assumption that this app would be used in an office setting where people work only from Monday to Friday, but the 9AM to 5PM requirement made me consider this aspect of the functionality.
+3. Deleting a Blockout. As it is now, you can add a Blockout, but you can't Delete one. Given there are a finite amount of timeslots in a day with zero restrictions (16 timeslots maximum), adding 16 blockouts essentially means you can never add any appointments to the app ever.
+4. Better defined timeslots. For example, actually enforcing the 30 minute input, or even extending it to allow 15 minute intervals instead.
+5. Allow the addition of an assigned user. For example, if this was a medical appointment system, we should be able to add a doctor.
+6. Allows the functionality of adding multiple appointments to a single timeslot. This can only work if there was a user added as per above.
+7. Email functionality. To send a confirmation email to the user that their appointment was successfully booked in the timeslot. Will also require an email field input.
+8. Defining the connection string via an appsettings.json file in the console application level, then have it be passed down to the DbContext via dependency injection. Currently, the connection string is hard defined in the DbContext level.
+9. Adding logging.
+10. Integration tests. It will be good to ensure that the correct data operations are taking place.
+11. Containerize the application. This is not really all that required, but it would be nice to have to show that we can containerize the app for better deployment too.
+12. Convert the application into a proper executable. At the current point of time, it cannot be run without either access to Visual Studio, or VS command lines.
