@@ -8,11 +8,9 @@ In the interest of scalability, and clearer data, I decided to split out the def
 
 The application has been designed with the fact of being able to making appointments in 30 minute intervals (e.g. minutes are either 0 or 30). This hasn't been enforced in code (ie. KEEP 15:52 is a legal input), but the display for the available timeslots will be displayed as such (i.e. if an appointment is listed for 09:00 and 09:01, the one with 09:00 will cause the timeslot "09:00 AM - 09:30 AM" to not display when using FIND, but the one with 09:01 will cause that same timeslot to appear in FIND).
 
-The application will continuously wait for input until it is forced to quit. To quit, either don't enter any text, or type "EXIT".
-
 Database is handled via migration (code-first approach).
 
-The console application accepts 4 different commands (commands are case insensitive):
+The console application accepts 4 different commands (all commands are case insensitive):
 
 # Setup
 
@@ -59,6 +57,14 @@ Input format: hh:mm
 Example: KEEP 15:00
 
 Allows the user to block out the timeslot specified in the input from allowing an appointment to be added to that timeslot at any date. Blocks out 30 minutes from the specified time.
+
+## 5. EXIT
+
+No input required
+
+Example: EXIT
+
+Kills the console application. The user can also choose to input an empty command, and it will work exactly the same as EXIT. 
 
 ## Areas for Improvement
 
